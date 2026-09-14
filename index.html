@@ -3,178 +3,433 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Capung & Krispi Corner | Order via WA</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>SegarNusantara - Jus, Es Degan & Gatrum/Capung</title>
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
+        /* RESET & BASE STYLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
         :root {
-            --primary: #e67e22;
-            --dark: #2c3e50;
-            --light: #fdfbf7;
-            --wa-green: #25D366;
+            --primary: #10B981; /* Emerald Green */
+            --primary-dark: #059669;
+            --accent: #F59E0B; /* Warm Amber */
+            --bg-dark: #0F172A; /* Deep Slate */
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --text-light: #F8FAFC;
+            --text-muted: #94A3B8;
         }
-        
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-        body { background-color: var(--light); color: var(--dark); line-height: 1.6; }
-        
-        /* Header */
-        header { 
-            background: white; padding: 1rem 5%; display: flex; 
-            justify-content: space-between; align-items: center; 
-            position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-        .logo { font-size: 1.5rem; font-weight: 700; color: var(--primary); }
-        
-        /* Hero Section */
-        .hero { 
-            text-align: center; padding: 4rem 1rem; 
-            background: linear-gradient(135deg, #fff3e0 0%, #ffffff 100%);
-        }
-        .hero h1 { font-size: 2.5rem; margin-bottom: 0.5rem; color: var(--dark); }
-        .hero p { color: #666; max-width: 600px; margin: 0 auto; }
 
-        /* Menu Grid */
-        .container { max-width: 1200px; margin: 0 auto; padding: 2rem 1rem; }
-        .section-title { text-align: center; margin-bottom: 2rem; font-size: 1.8rem; }
-        
-        .menu-grid { 
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-            gap: 2rem; 
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            overflow-x: hidden;
         }
-        
-        .card { 
-            background: white; border-radius: 15px; overflow: hidden; 
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: transform 0.3s;
-        }
-        .card:hover { transform: translateY(-5px); }
-        
-        .card-img { 
-            width: 100%; height: 200px; object-fit: cover; background: #eee;
-        }
-        
-        .card-body { padding: 1.5rem; }
-        .card-title { font-size: 1.2rem; margin-bottom: 0.5rem; }
-        .card-desc { font-size: 0.9rem; color: #777; margin-bottom: 1rem; }
-        
-        .card-footer { display: flex; justify-content: space-between; align-items: center; }
-        .price { font-size: 1.2rem; font-weight: 700; color: var(--primary); }
-        
-        .btn-order { 
-            background: var(--wa-green); color: white; border: none; 
-            padding: 0.6rem 1.2rem; border-radius: 50px; cursor: pointer; 
-            font-weight: 600; display: flex; align-items: center; gap: 0.5rem;
-            transition: opacity 0.3s; text-decoration: none;
-        }
-        .btn-order:hover { opacity: 0.9; }
 
-        footer { text-align: center; padding: 2rem; color: #888; font-size: 0.9rem; margin-top: 3rem; }
+        /* NAVBAR */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1.2rem 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-        @media (max-width: 600px) {
-            .hero h1 { font-size: 1.8rem; }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-light);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            min-height: 100vh;
+            padding: 8rem 8% 4rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: radial-gradient(circle at 10% 20%, rgba(16, 185, 129, 0.15) 0%, transparent 40%),
+                        radial-gradient(circle at 90% 80%, rgba(245, 158, 11, 0.15) 0%, transparent 40%);
+        }
+
+        .hero-text {
+            max-width: 600px;
+        }
+
+        .tagline {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--primary);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .hero-text h1 span {
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-text p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 14px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.4);
+            transition: 0.3s;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px -5px rgba(16, 185, 129, 0.6);
+        }
+
+        /* PRODUCTS SECTION */
+        .products-section {
+            padding: 6rem 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title p {
+            color: var(--text-muted);
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(16, 185, 129, 0.4);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .badge {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: rgba(15, 23, 42, 0.7);
+            color: var(--accent);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            z-index: 2;
+        }
+
+        .img-container {
+            width: 100%;
+            height: 220px;
+            border-radius: 14px;
+            overflow: hidden;
+            margin-bottom: 1.2rem;
+        }
+
+        .img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .img-container img {
+            transform: scale(1.08);
+        }
+
+        .product-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-info p {
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
+        }
+
+        .product-bottom {
+            margin-top: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .price {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .buy-btn {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-light);
+            border: none;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .product-card:hover .buy-btn {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* FOOTER */
+        footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 3rem 8%;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem 5%;
+            }
+            .hero {
+                padding: 7rem 5% 3rem;
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+            .nav-links {
+                display: none; /* Menyederhanakan tampilan mobile */
+            }
         }
     </style>
 </head>
 <body>
 
+    <!-- NAVBAR -->
     <header>
-        <div class="logo">🦗 Capung & Krispi</div>
+        <a href="#" class="logo">
+            <i class="fa-solid fa-glass-water-droplet"></i> Segar<span>Nusantara</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#hero">Beranda</a></li>
+            <li><a href="#produk">Produk</a></li>
+            <li><a href="#kontak">Kontak</a></li>
+        </ul>
     </header>
 
-    <section class="hero">
-        <h1>Camilan Unik & Segar</h1>
-        <p>Nikmati sensasi Capung Goreng renyah, Tahu Kripsi gurih, dan Jus buah segar. Pesan langsung via WhatsApp!</p>
+    <!-- HERO SECTION -->
+    <section class="hero" id="hero">
+        <div class="hero-text">
+            <span class="tagline"><i class="fa-solid fa-leaf"></i> 100% Alami & Fresh Setiap Hari</span>
+            <h1>Kesegaran Alami <span>Jus, Degan, & Gatrum</span></h1>
+            <p>Nikmati ragam minuman segar pilihan, dari buah-buahan segar, es degan murni, hingga pilihan unik capung/gatrum dalam satu tempat.</p>
+            <a href="#produk" class="cta-btn">
+                Jelajahi Menu <i class="fa-solid fa-arrow-right"></i>
+            </a>
+        </div>
     </section>
 
-    <div class="container">
-        <h2 class="section-title">Menu Favorit Kami</h2>
-        <div class="menu-grid" id="menuContainer">
-            <!-- Produk akan di-generate oleh JavaScript -->
+    <!-- PRODUCTS SECTION -->
+    <section class="products-section" id="produk">
+        <div class="section-title">
+            <h2>Koleksi Menu Segar</h2>
+            <p>Pilih minuman dan produk favoritmu untuk menemani harimu</p>
         </div>
-    </div>
 
-    <footer>
-        <p>&copy; 2024 Capung & Krispi Corner. All rights reserved.</p>
+        <div class="grid-container">
+
+            <!-- KATEGORI 1: JUS BUAH SEGAR -->
+            <div class="product-card">
+                <span class="badge">Jus Buah</span>
+                <div class="img-container">
+                    <img src="https://images.unsplash.com/photo-1613478223719-2ab802602423?auto=format&fit=crop&w=600&q=80" alt="Jus Alpukat">
+                </div>
+                <div class="product-info">
+                    <h3>Jus Alpukat Kental</h3>
+                    <p>Alpukat mentega pilihan dipadukan dengan krimer cokelat yang lezat dan gurih.</p>
+                </div>
+                <div class="product-bottom">
+                    <div class="price">Rp 15.000</div>
+                    <button class="buy-btn"><i class="fa-solid fa-cart-plus"></i></button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <span class="badge">Jus Buah</span>
+                <div class="img-container">
+                    <img src="https://images.unsplash.com/photo-1553530666-ba11a7da3888?auto=format&fit=crop&w=600&q=80" alt="Jus Mangga">
+                </div>
+                <div class="product-info">
+                    <h3>Jus Mangga Harum Manis</h3>
+                    <p>Mangga asli kaya vitamin C, diolah segar tanpa pemanis buatan.</p>
+                </div>
+                <div class="product-bottom">
+                    <div class="price">Rp 14.000</div>
+                    <button class="buy-btn"><i class="fa-solid fa-cart-plus"></i></button>
+                </div>
+            </div>
+
+            <!-- KATEGORI 2: ES DEGAN (KELAPA MUDA) -->
+            <div class="product-card">
+                <span class="badge">Es Degan</span>
+                <div class="img-container">
+                    <img src="https://images.unsplash.com/photo-1525385133512-2f3bdd039054?auto=format&fit=crop&w=600&q=80" alt="Es Degan Murni">
+                </div>
+                <div class="product-info">
+                    <h3>Es Degan Murni</h3>
+                    <p>Air dan daging kelapa muda segar langsung dari batoknya. Murni dan menghidrasi.</p>
+                </div>
+                <div class="product-bottom">
+                    <div class="price">Rp 10.000</div>
+                    <button class="buy-btn"><i class="fa-solid fa-cart-plus"></i></button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <span class="badge">Es Degan</span>
+                <div class="img-container">
+                    <img src="https://images.unsplash.com/photo-1546171753-97d7676e4602?auto=format&fit=crop&w=600&q=80" alt="Es Degan Gula Merah">
+                </div>
+                <div class="product-info">
+                    <h3>Es Degan Gula Jawa</h3>
+                    <p>Perpaduan rasa gurih kelapa muda dan manisnya sirup gula aren alami.</p>
+                </div>
+                <div class="product-bottom">
+                    <div class="price">Rp 12.000</div>
+                    <button class="buy-btn"><i class="fa-solid fa-cart-plus"></i></button>
+                </div>
+            </div>
+
+            <!-- KATEGORI 3: GATRUM / CAPUNG -->
+            <div class="product-card">
+                <span class="badge">Gatrum / Capung</span>
+                <div class="img-container">
+                    <img src="https://images.unsplash.com/photo-1526336024174-e58f5cdd8e13?auto=format&fit=crop&w=600&q=80" alt="Capung Hias / Gatrum">
+                </div>
+                <div class="product-info">
+                    <h3>Gatrum / Capung Merah</h3>
+                    <p>Jenis capung unik berwana merah untuk kebutuhan koleksi, fotografi, atau edukasi.</p>
+                </div>
+                <div class="product-bottom">
+                    <div class="price">Rp 8.000</div>
+                    <button class="buy-btn"><i class="fa-solid fa-cart-plus"></i></button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <span class="badge">Gatrum / Capung</span>
+                <div class="img-container">
+                    <img src="https://images.unsplash.com/photo-1470058869958-2a77ade41c02?auto=format&fit=crop&w=600&q=80" alt="Capung Hijau / Gatrum">
+                </div>
+                <div class="product-info">
+                    <h3>Gatrum / Capung Hijau (Jarum)</h3>
+                    <p>Jenis capung jarum dengan warna hijau menyala. Sangat unik dan langka.</p>
+                </div>
+                <div class="product-bottom">
+                    <div class="price">Rp 10.000</div>
+                    <button class="buy-btn"><i class="fa-solid fa-cart-plus"></i></button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="kontak">
+        <p>&copy; 2026 SegarNusantara. All Rights Reserved. Dibuat dengan desain modern.</p>
     </footer>
 
-    <script>
-        // ⚠️ GANTI NOMOR WA DI SINI (Format: 628xxx tanpa +)
-        const NOMOR_WA = "6281234567890"; 
-
-        const products = [
-            {
-                id: 1,
-                name: "Capung Goreng Original",
-                desc: "Capung pilihan digoreng kering dengan bumbu rempah rahasia. Renyah dan gurih!",
-                price: 15000,
-                img: "https://images.unsplash.com/photo-1604328698692-f76ea9498e76?w=400&q=80"
-            },
-            {
-                id: 2,
-                name: "Capung Goreng Pedas",
-                desc: "Varian pedas dengan taburan cabai bubuk premium. Cocok untuk pecinta pedas.",
-                price: 17000,
-                img: "https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=400&q=80"
-            },
-            {
-                id: 3,
-                name: "Tahu Kripsi Crispy",
-                desc: "Tahu putih goreng tepung super renyah dengan bumbu bawang spesial.",
-                price: 10000,
-                img: "https://images.unsplash.com/photo-1585032226651-759b368d7246?w=400&q=80"
-            },
-            {
-                id: 4,
-                name: "Jus Alpukat Coklat",
-                desc: "Alpukat mentega blend dengan susu coklat kental. Segar dan mengenyangkan.",
-                price: 18000,
-                img: "https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?w=400&q=80"
-            },
-            {
-                id: 5,
-                name: "Jus Mangga Harum Manis",
-                desc: "Mangga asli tanpa pemanis buatan. Murni kesegaran buah tropis.",
-                price: 15000,
-                img: "https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?w=400&q=80"
-            },
-            {
-                id: 6,
-                name: "Es Degan Gula Aren",
-                desc: "Kelapa muda asli dengan sirup gula aren organik. Pelepas dahaga terbaik.",
-                price: 20000,
-                img: "https://images.unsplash.com/photo-1543255006-d639f26f1c19?w=400&q=80"
-            }
-        ];
-
-        function formatRupiah(angka) {
-            return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(angka);
-        }
-
-        function renderProducts() {
-            const container = document.getElementById('menuContainer');
-            container.innerHTML = products.map(product => `
-                <div class="card">
-                    <img src="${product.img}" alt="${product.name}" class="card-img" loading="lazy">
-                    <div class="card-body">
-                        <h3 class="card-title">${product.name}</h3>
-                        <p class="card-desc">${product.desc}</p>
-                        <div class="card-footer">
-                            <span class="price">${formatRupiah(product.price)}</span>
-                            <button class="btn-order" onclick="orderViaWA('${product.name}', ${product.price})">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-                                Pesan
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        function orderViaWA(productName, price) {
-            const message = `Halo, saya mau beli ${productName} seharga ${formatRupiah(price)}. Apakah masih tersedia?`;
-            const waLink = `https://wa.me/${087811634854}?text=${encodeURIComponent(message)}`;
-            window.open(waLink, '_blank');
-        }
-
-        renderProducts();
-    </script>
 </body>
 </html>
