@@ -1,166 +1,505 @@
+```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jaya Abadi | Gantungan Kunci & Minuman Segar</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <title>Jaya Abadi | Toko Online</title>
+
     <style>
-        :root {
-            --primary: #f39c12; /* Warna emas/oranye untuk nuansa Jaya Abadi */
-            --dark: #2c3e50;
-            --light: #fefcf3;
-            --wa-green: #25D366;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
         }
-        
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-        body { background-color: var(--light); color: var(--dark); line-height: 1.6; }
-        
-        /* Header */
-        header { 
-            background: white; padding: 1rem 5%; display: flex; 
-            justify-content: space-between; align-items: center; 
-            position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-        .logo { font-size: 1.5rem; font-weight: 700; color: var(--primary); }
-        
-        /* Hero Section */
-        .hero { 
-            text-align: center; padding: 4rem 1rem; 
-            background: linear-gradient(135deg, #fff8e1 0%, #ffffff 100%);
-        }
-        .hero h1 { font-size: 2.5rem; margin-bottom: 0.5rem; color: var(--dark); }
-        .hero p { color: #666; max-width: 600px; margin: 0 auto; }
 
-        /* Menu Grid */
-        .container { max-width: 1200px; margin: 0 auto; padding: 2rem 1rem; }
-        .section-title { text-align: center; margin-bottom: 2rem; font-size: 1.8rem; }
-        
-        .menu-grid { 
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-            gap: 2rem; 
+        body {
+            background: #f5f7fb;
+            color: #222;
         }
-        
-        .card { 
-            background: white; border-radius: 15px; overflow: hidden; 
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: transform 0.3s;
-        }
-        .card:hover { transform: translateY(-5px); }
-        
-        .card-img { 
-            width: 100%; height: 200px; object-fit: cover; background: #eee;
-        }
-        
-        .card-body { padding: 1.5rem; }
-        .card-title { font-size: 1.2rem; margin-bottom: 0.5rem; }
-        .card-desc { font-size: 0.9rem; color: #777; margin-bottom: 1rem; }
-        
-        .card-footer { display: flex; justify-content: space-between; align-items: center; }
-        .price { font-size: 1.2rem; font-weight: 700; color: var(--primary); }
-        
-        .btn-order { 
-            background: var(--wa-green); color: white; border: none; 
-            padding: 0.6rem 1.2rem; border-radius: 50px; cursor: pointer; 
-            font-weight: 600; display: flex; align-items: center; gap: 0.5rem;
-            transition: opacity 0.3s; text-decoration: none;
-        }
-        .btn-order:hover { opacity: 0.9; }
 
-        footer { text-align: center; padding: 2rem; color: #888; font-size: 0.9rem; margin-top: 3rem; }
+        /* NAVBAR */
+        header {
+            background: #111827;
+            color: white;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
 
-        @media (max-width: 600px) {
-            .hero h1 { font-size: 1.8rem; }
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #22c55e;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-size: 15px;
+        }
+
+        nav a:hover {
+            color: #22c55e;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 430px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 60px 8%;
+            background: linear-gradient(135deg, #111827, #1f2937);
+            color: white;
+            gap: 30px;
+        }
+
+        .hero-text {
+            max-width: 600px;
+        }
+
+        .hero-text h1 {
+            font-size: 50px;
+            margin-bottom: 15px;
+        }
+
+        .hero-text h1 span {
+            color: #22c55e;
+        }
+
+        .hero-text p {
+            color: #d1d5db;
+            line-height: 1.7;
+            font-size: 17px;
+            margin-bottom: 25px;
+        }
+
+        .hero-button {
+            display: inline-block;
+            background: #22c55e;
+            color: white;
+            text-decoration: none;
+            padding: 14px 24px;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+
+        .hero-button:hover {
+            background: #16a34a;
+        }
+
+        .hero-icon {
+            font-size: 150px;
+        }
+
+        /* PRODUK */
+        .products {
+            padding: 70px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-title h2 {
+            font-size: 34px;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #6b7280;
+        }
+
+        .product-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            transition: 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.13);
+        }
+
+        .product-image {
+            height: 230px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 100px;
+            background: #f0fdf4;
+        }
+
+        .mango {
+            background: #fff7ed;
+        }
+
+        .cincau {
+            background: #f3f4f6;
+        }
+
+        .product-info {
+            padding: 25px;
+        }
+
+        .product-info h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .product-info p {
+            color: #6b7280;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .price {
+            color: #16a34a;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 18px;
+        }
+
+        .order-button {
+            display: block;
+            width: 100%;
+            border: none;
+            padding: 13px;
+            border-radius: 9px;
+            background: #22c55e;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .order-button:hover {
+            background: #16a34a;
+        }
+
+        /* TENTANG */
+        .about {
+            background: white;
+            padding: 70px 8%;
+            text-align: center;
+        }
+
+        .about h2 {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        .about p {
+            max-width: 750px;
+            margin: auto;
+            color: #6b7280;
+            line-height: 1.8;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        footer span {
+            color: #22c55e;
+        }
+
+        /* WHATSAPP FLOAT */
+        .wa-float {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #25D366;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            text-decoration: none;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            z-index: 999;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 850px) {
+            .hero {
+                text-align: center;
+                flex-direction: column;
+            }
+
+            .hero-text h1 {
+                font-size: 38px;
+            }
+
+            .hero-icon {
+                font-size: 100px;
+            }
+
+            .product-container {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                display: none;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .hero {
+                padding: 45px 6%;
+            }
+
+            .products,
+            .about {
+                padding-left: 6%;
+                padding-right: 6%;
+            }
+
+            .hero-text h1 {
+                font-size: 34px;
+            }
         }
     </style>
 </head>
+
 <body>
 
+    <!-- NAVBAR -->
     <header>
-        <div class="logo">✨ Jaya Abadi</div>
+        <div class="logo">
+            Jaya <span>Abadi</span>
+        </div>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#produk">Produk</a>
+            <a href="#tentang">Tentang</a>
+        </nav>
     </header>
 
-    <section class="hero">
-        <h1>Souvenir Unik & Minuman Segar</h1>
-        <p>Koleksi gantungan kunci capung handmade, jus mangga murni, dan es cincau pelepas dahaga. Pesan langsung via WhatsApp!</p>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+
+        <div class="hero-text">
+            <h1>Selamat Datang di <span>Jaya Abadi</span></h1>
+
+            <p>
+                Temukan produk pilihan kami dengan harga terjangkau.
+                Tersedia Gantungan Kunci Capung, Jus Mangga segar,
+                dan Es Cincau yang menyegarkan.
+            </p>
+
+            <a href="#produk" class="hero-button">
+                🛍️ Lihat Produk
+            </a>
+        </div>
+
+        <div class="hero-icon">
+            🛍️
+        </div>
+
     </section>
 
-    <div class="container">
-        <h2 class="section-title">Produk Pilihan Kami</h2>
-        <div class="menu-grid" id="menuContainer">
-            <!-- Produk akan di-generate oleh JavaScript -->
-        </div>
-    </div>
 
+    <!-- PRODUK -->
+    <section class="products" id="produk">
+
+        <div class="section-title">
+            <h2>Produk Kami</h2>
+            <p>Pilih produk yang ingin Anda pesan</p>
+        </div>
+
+
+        <div class="product-container">
+
+            <!-- PRODUK 1 -->
+            <div class="product-card">
+
+                <div class="product-image">
+                    🦋
+                </div>
+
+                <div class="product-info">
+
+                    <h3>Gantungan Kunci Capung</h3>
+
+                    <p>
+                        Gantungan kunci berbentuk capung,
+                        cocok untuk koleksi atau hadiah.
+                    </p>
+
+                    <div class="price">
+                        Rp5.000
+                    </div>
+
+                    <button
+                        class="order-button"
+                        onclick="pesan('Gantungan Kunci Capung', 'Rp5.000')">
+                        💬 Pesan Sekarang
+                    </button>
+
+                </div>
+            </div>
+
+
+            <!-- PRODUK 2 -->
+            <div class="product-card">
+
+                <div class="product-image mango">
+                    🥭
+                </div>
+
+                <div class="product-info">
+
+                    <h3>Jus Mangga</h3>
+
+                    <p>
+                        Jus mangga segar dan nikmat,
+                        cocok diminum saat cuaca panas.
+                    </p>
+
+                    <div class="price">
+                        Rp8.000
+                    </div>
+
+                    <button
+                        class="order-button"
+                        onclick="pesan('Jus Mangga', 'Rp8.000')">
+                        💬 Pesan Sekarang
+                    </button>
+
+                </div>
+            </div>
+
+
+            <!-- PRODUK 3 -->
+            <div class="product-card">
+
+                <div class="product-image cincau">
+                    🥤
+                </div>
+
+                <div class="product-info">
+
+                    <h3>Es Cincau</h3>
+
+                    <p>
+                        Minuman cincau dingin yang segar
+                        dan cocok untuk menemani aktivitas.
+                    </p>
+
+                    <div class="price">
+                        Rp6.000
+                    </div>
+
+                    <button
+                        class="order-button"
+                        onclick="pesan('Es Cincau', 'Rp6.000')">
+                        💬 Pesan Sekarang
+                    </button>
+
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- TENTANG -->
+    <section class="about" id="tentang">
+
+        <h2>Tentang Jaya Abadi</h2>
+
+        <p>
+            Jaya Abadi adalah toko online yang menyediakan berbagai
+            produk menarik dengan harga terjangkau. Pesanan dapat
+            dilakukan dengan mudah melalui WhatsApp.
+        </p>
+
+    </section>
+
+
+    <!-- FOOTER -->
     <footer>
-        <p>&copy; 2024 Jaya Abadi. All rights reserved.</p>
+        <p>
+            © 2026 <span>Jaya Abadi</span> — Semua Hak Dilindungi
+        </p>
     </footer>
 
+
+    <!-- WHATSAPP FLOAT -->
+    <a
+        class="wa-float"
+        href="https://wa.me/6281234567890"
+        target="_blank"
+        title="Chat WhatsApp">
+        💬
+    </a>
+
+
+    <!-- JAVASCRIPT -->
     <script>
-        // ⚠️ GANTI NOMOR WA DI SINI (Format: 628xxx tanpa +)
-        const NOMOR_WA = "6282245915267"; 
 
-        const products = [
-            {
-                id: 2,
-                name: "Gantungan Kunci Capung Kayu",
-                desc: "Ukiran kayu jati berbentuk capung dengan finishing natural. Ringan dan tahan lama.",
-                price: 30000,
-                img: "https://www.pexels.com/search/dragonfly/.jpg"
-            },
-            {
-                id: 3,
-                name: "Jus Mangga Harum Manis",
-                desc: "Mangga harum manis asli diblend tanpa air tambahan. Manis alami dan kaya vitamin C.",
-                price: 15000,
-                img: "https://commons.wikimedia.org/wiki/Special:FilePath/Glass_of_Mango_Juice.jpg"
-            },
-            {
-                id: 4,
-                name: "Jus Mangga Susu",
-                desc: "Perpaduan jus mangga segar dengan susu kental manis. Creamy dan menyegarkan.",
-                price: 18000,
-                img: "https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?w=400&q=80"
-            },
-            {
-                id: 6,
-                name: "Es Cincau Kelapa Muda",
-                desc: "Es cincau dengan topping kelapa muda asli dan air kelapa murni. Segar dan sehat.",
-                price: 15000,
-                img: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=400&q=80"
-            }
-        ];
+        // =====================================
+        // GANTI NOMOR WHATSAPP DI SINI
+        // =====================================
 
-        function formatRupiah(angka) {
-            return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(angka);
+        const nomorWhatsApp = "6281234567890";
+
+
+        // =====================================
+        // FUNGSI PESAN PRODUK
+        // =====================================
+
+        function pesan(namaProduk, harga) {
+
+            const pesan =
+                "Halo, saya mau beli " +
+                namaProduk +
+                " dengan harga " +
+                harga;
+
+            const url =
+                "https://wa.me/" +
+                nomorWhatsApp +
+                "?text=" +
+                encodeURIComponent(pesan);
+
+            window.open(url, "_blank");
         }
 
-        function renderProducts() {
-            const container = document.getElementById('menuContainer');
-            container.innerHTML = products.map(product => `
-                <div class="card">
-                    <img src="${product.img}" alt="${product.name}" class="card-img" loading="lazy">
-                    <div class="card-body">
-                        <h3 class="card-title">${product.name}</h3>
-                        <p class="card-desc">${product.desc}</p>
-                        <div class="card-footer">
-                            <span class="price">${formatRupiah(product.price)}</span>
-                            <button class="btn-order" onclick="orderViaWA('${product.name}', ${product.price})">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-                                Pesan
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        function orderViaWA(productName, price) {
-            const message = `Halo, saya mau beli ${productName} seharga ${formatRupiah(price)}. Apakah masih tersedia?`;
-            const waLink = `https://wa.me/${}?text=${encodeURIComponent(message)}`;
-            window.open(waLink, '_blank');
-        }
-
-        renderProducts();
     </script>
+
 </body>
 </html>
+```
