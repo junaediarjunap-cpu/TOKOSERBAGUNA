@@ -1,785 +1,180 @@
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>SegarKu - Jus, Capung & Es Degan</title>
-
-    <!-- Google Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
+    <title>Capung & Krispi Corner | Order via WA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
+        :root {
+            --primary: #e67e22;
+            --dark: #2c3e50;
+            --light: #fdfbf7;
+            --wa-green: #25D366;
         }
-
-        body {
-            font-family: "Poppins", sans-serif;
-            background: #f7fff9;
-            color: #173b2a;
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { background-color: var(--light); color: var(--dark); line-height: 1.6; }
+        
+        /* Header */
+        header { 
+            background: white; padding: 1rem 5%; display: flex; 
+            justify-content: space-between; align-items: center; 
+            position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
-
-        /* ================= NAVBAR ================= */
-
-        nav {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            height: 75px;
-            background: rgba(255,255,255,.95);
-            backdrop-filter: blur(10px);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 7%;
-            box-shadow: 0 3px 20px rgba(0,0,0,.08);
+        .logo { font-size: 1.5rem; font-weight: 700; color: var(--primary); }
+        
+        /* Hero Section */
+        .hero { 
+            text-align: center; padding: 4rem 1rem; 
+            background: linear-gradient(135deg, #fff3e0 0%, #ffffff 100%);
         }
+        .hero h1 { font-size: 2.5rem; margin-bottom: 0.5rem; color: var(--dark); }
+        .hero p { color: #666; max-width: 600px; margin: 0 auto; }
 
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 23px;
-            font-weight: 800;
-            color: #08783f;
+        /* Menu Grid */
+        .container { max-width: 1200px; margin: 0 auto; padding: 2rem 1rem; }
+        .section-title { text-align: center; margin-bottom: 2rem; font-size: 1.8rem; }
+        
+        .menu-grid { 
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 2rem; 
         }
-
-        .logo i {
-            font-size: 32px;
+        
+        .card { 
+            background: white; border-radius: 15px; overflow: hidden; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: transform 0.3s;
         }
-
-        .menu {
-            display: flex;
-            gap: 30px;
-            list-style: none;
+        .card:hover { transform: translateY(-5px); }
+        
+        .card-img { 
+            width: 100%; height: 200px; object-fit: cover; background: #eee;
         }
-
-        .menu a {
-            text-decoration: none;
-            color: #244636;
-            font-weight: 500;
-            transition: .3s;
+        
+        .card-body { padding: 1.5rem; }
+        .card-title { font-size: 1.2rem; margin-bottom: 0.5rem; }
+        .card-desc { font-size: 0.9rem; color: #777; margin-bottom: 1rem; }
+        
+        .card-footer { display: flex; justify-content: space-between; align-items: center; }
+        .price { font-size: 1.2rem; font-weight: 700; color: var(--primary); }
+        
+        .btn-order { 
+            background: var(--wa-green); color: white; border: none; 
+            padding: 0.6rem 1.2rem; border-radius: 50px; cursor: pointer; 
+            font-weight: 600; display: flex; align-items: center; gap: 0.5rem;
+            transition: opacity 0.3s; text-decoration: none;
         }
+        .btn-order:hover { opacity: 0.9; }
 
-        .menu a:hover {
-            color: #079447;
-        }
+        footer { text-align: center; padding: 2rem; color: #888; font-size: 0.9rem; margin-top: 3rem; }
 
-        .wa-btn {
-            background: #079447;
-            color: white;
-            padding: 12px 20px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: .3s;
-        }
-
-        .wa-btn:hover {
-            background: #056d35;
-            transform: translateY(-2px);
-        }
-
-        /* ================= HERO ================= */
-
-        .hero {
-            min-height: 570px;
-            display: flex;
-            align-items: center;
-            padding: 70px 7%;
-            background:
-                linear-gradient(90deg,
-                rgba(4,65,33,.94),
-                rgba(4,65,33,.65),
-                rgba(4,65,33,.2)),
-                url("https://images.unsplash.com/photo-1600271886742-f049cd451bba?auto=format&fit=crop&w=1600&q=80");
-
-            background-size: cover;
-            background-position: center;
-            color: white;
-        }
-
-        .hero-content {
-            max-width: 650px;
-        }
-
-        .badge {
-            display: inline-block;
-            background: #d9ffe8;
-            color: #08783f;
-            padding: 8px 17px;
-            border-radius: 30px;
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 20px;
-        }
-
-        .hero h1 {
-            font-size: clamp(42px, 6vw, 72px);
-            line-height: 1.08;
-            margin-bottom: 20px;
-        }
-
-        .hero h1 span {
-            color: #65ef9b;
-        }
-
-        .hero p {
-            font-size: 18px;
-            max-width: 570px;
-            color: #e9fff1;
-            line-height: 1.7;
-            margin-bottom: 30px;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .btn-primary {
-            background: #16a85a;
-            color: white;
-            text-decoration: none;
-            padding: 14px 25px;
-            border-radius: 30px;
-            font-weight: 600;
-            transition: .3s;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            background: #078541;
-        }
-
-        .btn-secondary {
-            color: white;
-            border: 1px solid white;
-            padding: 13px 25px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        /* ================= SECTION ================= */
-
-        section {
-            padding: 75px 7%;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 45px;
-        }
-
-        .section-title small {
-            color: #0b9250;
-            font-weight: 700;
-        }
-
-        .section-title h2 {
-            font-size: 38px;
-            margin: 8px 0;
-        }
-
-        .section-title p {
-            color: #718078;
-        }
-
-        /* ================= CATEGORY ================= */
-
-        .categories {
-            display: grid;
-            grid-template-columns: repeat(3,1fr);
-            gap: 25px;
-        }
-
-        .category {
-            background: white;
-            border-radius: 22px;
-            padding: 25px;
-            border: 1px solid #e2eee7;
-            box-shadow: 0 10px 35px rgba(0,0,0,.05);
-            transition: .3s;
-        }
-
-        .category:hover {
-            transform: translateY(-7px);
-        }
-
-        .category h3 {
-            margin-bottom: 8px;
-        }
-
-        .category p {
-            font-size: 14px;
-            color: #718078;
-            margin-bottom: 20px;
-        }
-
-        .category-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 15px;
-            font-size: 22px;
-            background: #e2fff0;
-            color: #078541;
-        }
-
-        /* ================= PRODUCTS ================= */
-
-        .products {
-            display: grid;
-            grid-template-columns: repeat(4,1fr);
-            gap: 20px;
-        }
-
-        .product {
-            background: white;
-            overflow: hidden;
-            border-radius: 20px;
-            border: 1px solid #e5eee8;
-            box-shadow: 0 8px 25px rgba(0,0,0,.05);
-            transition: .3s;
-        }
-
-        .product:hover {
-            transform: translateY(-7px);
-            box-shadow: 0 15px 35px rgba(0,0,0,.1);
-        }
-
-        .product-img {
-            height: 220px;
-            overflow: hidden;
-        }
-
-        .product-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: .5s;
-        }
-
-        .product:hover img {
-            transform: scale(1.08);
-        }
-
-        .product-info {
-            padding: 18px;
-        }
-
-        .product-info h3 {
-            font-size: 17px;
-            margin-bottom: 5px;
-        }
-
-        .product-info p {
-            font-size: 13px;
-            color: #78847d;
-            margin-bottom: 10px;
-        }
-
-        .price {
-            color: #087f42;
-            font-weight: 800;
-            font-size: 18px;
-            margin-bottom: 14px;
-        }
-
-        .order-btn {
-            width: 100%;
-            border: none;
-            background: #087f42;
-            color: white;
-            padding: 11px;
-            border-radius: 12px;
-            cursor: pointer;
-            font-family: inherit;
-            font-weight: 600;
-            transition: .3s;
-        }
-
-        .order-btn:hover {
-            background: #055e30;
-        }
-
-        /* ================= WHATSAPP ================= */
-
-        .order-section {
-            background: linear-gradient(135deg,#dffff0,#effff6);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 40px;
-            border-radius: 30px;
-            margin: 30px 7%;
-            padding: 55px;
-        }
-
-        .order-section h2 {
-            font-size: 35px;
-            margin-bottom: 12px;
-        }
-
-        .order-section p {
-            color: #5c6d63;
-            max-width: 600px;
-            margin-bottom: 20px;
-        }
-
-        .phone {
-            font-size: 18px;
-            font-weight: 700;
-            color: #087f42;
-        }
-
-        .whatsapp-big {
-            min-width: 210px;
-            background: #16a85a;
-            color: white;
-            text-align: center;
-            padding: 17px 25px;
-            border-radius: 40px;
-            text-decoration: none;
-            font-weight: 700;
-            box-shadow: 0 10px 25px rgba(22,168,90,.25);
-        }
-
-        /* ================= FOOTER ================= */
-
-        footer {
-            background: #083b28;
-            color: white;
-            padding: 50px 7% 25px;
-        }
-
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            gap: 30px;
-            margin-bottom: 35px;
-        }
-
-        footer h3 {
-            font-size: 23px;
-            margin-bottom: 10px;
-        }
-
-        footer p {
-            color: #c3d9cd;
-            max-width: 400px;
-            font-size: 14px;
-            line-height: 1.7;
-        }
-
-        .social {
-            display: flex;
-            gap: 15px;
-        }
-
-        .social a {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: rgba(255,255,255,.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-decoration: none;
-        }
-
-        .copyright {
-            border-top: 1px solid rgba(255,255,255,.15);
-            padding-top: 20px;
-            text-align: center;
-            color: #adc7ba;
-            font-size: 13px;
-        }
-
-        /* ================= MOBILE ================= */
-
-        @media(max-width: 900px) {
-
-            .menu {
-                display: none;
-            }
-
-            .products {
-                grid-template-columns: repeat(2,1fr);
-            }
-
-            .categories {
-                grid-template-columns: 1fr;
-            }
-
-            .order-section {
-                margin: 20px;
-                padding: 35px 25px;
-                flex-direction: column;
-                align-items: flex-start;
-            }
-        }
-
-        @media(max-width: 600px) {
-
-            nav {
-                padding: 0 5%;
-            }
-
-            .wa-btn {
-                padding: 9px 14px;
-                font-size: 12px;
-            }
-
-            .hero {
-                min-height: 550px;
-                padding: 50px 6%;
-            }
-
-            .hero p {
-                font-size: 15px;
-            }
-
-            section {
-                padding: 55px 6%;
-            }
-
-            .products {
-                grid-template-columns: 1fr;
-            }
-
-            .section-title h2 {
-                font-size: 29px;
-            }
-
-            .order-section h2 {
-                font-size: 28px;
-            }
-
-            .footer-content {
-                flex-direction: column;
-            }
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 1.8rem; }
         }
     </style>
 </head>
-
 <body>
 
-<!-- ================= NAVBAR ================= -->
+    <header>
+        <div class="logo">🦗 Capung & Krispi</div>
+    </header>
 
-<nav>
+    <section class="hero">
+        <h1>Camilan Unik & Segar</h1>
+        <p>Nikmati sensasi Capung Goreng renyah, Tahu Kripsi gurih, dan Jus buah segar. Pesan langsung via WhatsApp!</p>
+    </section>
 
-    <div class="logo">
-        <i class="fa-solid fa-leaf"></i>
-        SegarKu
+    <div class="container">
+        <h2 class="section-title">Menu Favorit Kami</h2>
+        <div class="menu-grid" id="menuContainer">
+            <!-- Produk akan di-generate oleh JavaScript -->
+        </div>
     </div>
 
-    <ul class="menu">
-        <li><a href="#home">Beranda</a></li>
-        <li><a href="#produk">Produk</a></li>
-        <li><a href="#pesan">Cara Pesan</a></li>
-        <li><a href="#kontak">Kontak</a></li>
-    </ul>
+    <footer>
+        <p>&copy; 2024 Capung & Krispi Corner. All rights reserved.</p>
+    </footer>
 
-    <a class="wa-btn"
-       href="https://wa.me/6281234567890"
-       target="_blank">
-       <i class="fa-brands fa-whatsapp"></i>
-       Pesan
-    </a>
+    <script>
+        // ⚠️ GANTI NOMOR WA DI SINI (Format: 628xxx tanpa +)
+        const NOMOR_WA = "6281234567890"; 
 
-</nav>
+        const products = [
+            {
+                id: 1,
+                name: "Capung Goreng Original",
+                desc: "Capung pilihan digoreng kering dengan bumbu rempah rahasia. Renyah dan gurih!",
+                price: 15000,
+                img: "https://images.unsplash.com/photo-1604328698692-f76ea9498e76?w=400&q=80"
+            },
+            {
+                id: 2,
+                name: "Capung Goreng Pedas",
+                desc: "Varian pedas dengan taburan cabai bubuk premium. Cocok untuk pecinta pedas.",
+                price: 17000,
+                img: "https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=400&q=80"
+            },
+            {
+                id: 3,
+                name: "Tahu Kripsi Crispy",
+                desc: "Tahu putih goreng tepung super renyah dengan bumbu bawang spesial.",
+                price: 10000,
+                img: "https://images.unsplash.com/photo-1585032226651-759b368d7246?w=400&q=80"
+            },
+            {
+                id: 4,
+                name: "Jus Alpukat Coklat",
+                desc: "Alpukat mentega blend dengan susu coklat kental. Segar dan mengenyangkan.",
+                price: 18000,
+                img: "https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?w=400&q=80"
+            },
+            {
+                id: 5,
+                name: "Jus Mangga Harum Manis",
+                desc: "Mangga asli tanpa pemanis buatan. Murni kesegaran buah tropis.",
+                price: 15000,
+                img: "https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?w=400&q=80"
+            },
+            {
+                id: 6,
+                name: "Es Degan Gula Aren",
+                desc: "Kelapa muda asli dengan sirup gula aren organik. Pelepas dahaga terbaik.",
+                price: 20000,
+                img: "https://images.unsplash.com/photo-1543255006-d639f26f1c19?w=400&q=80"
+            }
+        ];
 
+        function formatRupiah(angka) {
+            return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(angka);
+        }
 
-<!-- ================= HERO ================= -->
-
-<section class="hero" id="home">
-
-    <div class="hero-content">
-
-        <span class="badge">
-            <i class="fa-solid fa-leaf"></i>
-            Minuman Segar & Berkualitas
-        </span>
-
-        <h1>
-            Jus, <span>Capung</span><br>
-            & Es Degan
-        </h1>
-
-        <p>
-            Kesegaran alami dengan rasa yang nikmat.
-            Pilihan minuman segar untuk menemani aktivitas
-            kamu setiap hari.
-        </p>
-
-        <div class="hero-buttons">
-
-            <a href="#produk" class="btn-primary">
-                <i class="fa-solid fa-bag-shopping"></i>
-                Lihat Produk
-            </a>
-
-            <a href="#pesan" class="btn-secondary">
-                Cara Pemesanan
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ================= PRODUK ================= -->
-
-<section id="produk">
-
-    <div class="section-title">
-
-        <small>✦ PRODUK KAMI ✦</small>
-
-        <h2>Pilihan Minuman Favorit</h2>
-
-        <p>
-            Pilih minuman favoritmu dan pesan langsung melalui WhatsApp.
-        </p>
-
-    </div>
-
-
-    <!-- JUS -->
-
-    <div class="category">
-
-        <div class="category-icon">
-            <i class="fa-solid fa-glass-water"></i>
-        </div>
-
-        <h3>Jus Buah</h3>
-
-        <p>
-            Jus buah segar dengan bahan berkualitas.
-        </p>
-
-        <div class="products">
-
-            <div class="product">
-
-                <div class="product-img">
-                    <img src="https://images.unsplash.com/photo-1600271886742-f049cd451bba?auto=format&fit=crop&w=600&q=80">
+        function renderProducts() {
+            const container = document.getElementById('menuContainer');
+            container.innerHTML = products.map(product => `
+                <div class="card">
+                    <img src="${product.img}" alt="${product.name}" class="card-img" loading="lazy">
+                    <div class="card-body">
+                        <h3 class="card-title">${product.name}</h3>
+                        <p class="card-desc">${product.desc}</p>
+                        <div class="card-footer">
+                            <span class="price">${formatRupiah(product.price)}</span>
+                            <button class="btn-order" onclick="orderViaWA('${product.name}', ${product.price})">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                                Pesan
+                            </button>
+                        </div>
+                    </div>
                 </div>
-
-                <div class="product-info">
-
-                    <h3>Jus Mangga</h3>
-
-                    <p>Manis dan segar</p>
-
-                    <div class="price">Rp 8.000</div>
-
-                    <button class="order-btn"
-                            onclick="pesan('Jus Mangga','8000')">
-                        <i class="fa-brands fa-whatsapp"></i>
-                        Pesan Sekarang
-                    </button>
-
-                </div>
-
-            </div>
-
-
-            <div class="product">
-
-                <div class="product-img">
-                    <img src="https://images.unsplash.com/photo-1553279768-865429fa0078?auto=format&fit=crop&w=600&q=80">
-                </div>
-
-                <div class="product-info">
-
-                    <h3>Jus Alpukat</h3>
-
-                    <p>Alpukat creamy</p>
-
-                    <div class="price">Rp 10.000</div>
-
-                    <button class="order-btn"
-                            onclick="pesan('Jus Alpukat','10000')">
-                        <i class="fa-brands fa-whatsapp"></i>
-                        Pesan Sekarang
-                    </button>
-
-                </div>
-
-            </div>
-
-
-            <div class="product">
-
-                <div class="product-img">
-                    <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=600&q=80">
-                </div>
-
-                <div class="product-info">
-
-                    <h3>Jus Strawberry</h3>
-
-                    <p>Segar dan manis</p>
-
-                    <div class="price">Rp 10.000</div>
-
-                    <button class="order-btn"
-                            onclick="pesan('Jus Strawberry','10000')">
-                        <i class="fa-brands fa-whatsapp"></i>
-                        Pesan Sekarang
-                    </button>
-
-                </div>
-
-            </div>
-
-
-            <div class="product">
-
-                <div class="product-img">
-                    <img src="https://images.unsplash.com/photo-1613478223719-2ab802602423?auto=format&fit=crop&w=600&q=80">
-                </div>
-
-                <div class="product-info">
-
-                    <h3>Jus Jeruk</h3>
-
-                    <p>Asam manis menyegarkan</p>
-
-                    <div class="price">Rp 8.000</div>
-
-                    <button class="order-btn"
-                            onclick="pesan('Jus Jeruk','8000')">
-                        <i class="fa-brands fa-whatsapp"></i>
-                        Pesan Sekarang
-                    </button>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- CAPUNG -->
-
-    <div class="category" style="margin-top:30px;">
-
-        <div class="category-icon">
-            🦋
-        </div>
-
-        <h3>Capung</h3>
-
-        <p>
-            Berbagai varian capung dengan rasa unik.
-        </p>
-
-        <div class="products">
-
-            <div class="product">
-
-                <div class="product-img">
-                    <img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=600&q=80">
-                </div>
-
-                <div class="product-info">
-
-                    <h3>Capung Original</h3>
-
-                    <p>Varian original</p>
-
-                    <div class="price">Rp 5.000</div>
-
-                    <button class="order-btn"
-                            onclick="pesan('Capung Original','5000')">
-                        <i class="fa-brands fa-whatsapp"></i>
-                        Pesan Sekarang
-                    </button>
-
-                </div>
-
-            </div>
-
-
-            <div class="product">
-
-                <div class="product-img">
-                    <img src="https://images.unsplash.com/photo-1577805947697-89e18249d767?auto=format&fit=crop&w=600&q=80">
-                </div>
-
-                <div class="product-info">
-
-                    <h3>Capung Cokelat</h3>
-
-                    <p>Rasa cokelat</p>
-
-                    <div class="price">Rp 6.000</div>
-
-                    <button class="order-btn"
-                            onclick="pesan('Capung Cokelat','6000')">
-                        <i class="fa-brands fa-whatsapp"></i>
-                        Pesan Sekarang
-                    </button>
-
-                </div>
-
-            </div>
-
-
-            <div class="product">
-
-                <div class="product-img">
-                    <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=600&q=80">
-                </div>
-
-                <div class="product-info">
-
-                    <h3>Capung Warna</h3>
-
-                    <p>Rasa warna-warni</p>
-
-                    <div class="price">Rp 5.000</div>
-
-                    <button class="order-btn"
-                            onclick="pesan('Capung Warna','5000')">
-                        <i class="fa-brands fa-whatsapp"></i>
-                        Pesan Sekarang
-                    </button>
-
-                </div>
-
-            </div>
-
-
-            <div class="product">
-
-                <div class="product-img">
-                    <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=600&q=80">
-                </div>
-                </body>
-                </html>
+            `).join('');
+        }
+
+        function orderViaWA(productName, price) {
+            const message = `Halo, saya mau beli ${productName} seharga ${formatRupiah(price)}. Apakah masih tersedia?`;
+            const waLink = `https://wa.me/${087811634854}?text=${encodeURIComponent(message)}`;
+            window.open(waLink, '_blank');
+        }
+
+        renderProducts();
+    </script>
+</body>
+</html>
