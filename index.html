@@ -1,141 +1,787 @@
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Toko Minuman Segar</title>
-  <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      margin: 0;
-      background: #f9fafb;
-      color: #333;
-    }
-    nav {
-      background: #ff6f61;
-      padding: 15px;
-      text-align: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 15px;
-      font-weight: bold;
-      transition: color 0.3s;
-    }
-    nav a:hover {
-      color: #ffe0d6;
-    }
-    header {
-      text-align: center;
-      padding: 60px 20px;
-      background: linear-gradient(120deg, #ff6f61, #ff9966);
-      color: white;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 3em;
-    }
-    header p {
-      font-size: 1.2em;
-    }
-    .container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 25px;
-      padding: 40px;
-    }
-    .card {
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-      overflow: hidden;
-      transition: transform 0.3s;
-    }
-    .card:hover {
-      transform: translateY(-8px);
-    }
-    .card img {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-    }
-    .card h3 {
-      margin: 15px;
-      font-size: 1.4em;
-      color: #ff6f61;
-    }
-    .card p {
-      margin: 0 15px 15px;
-      color: #555;
-    }
-    .btn {
-      display: block;
-      text-align: center;
-      margin: 15px;
-      padding: 12px;
-      background: #25D366;
-      color: white;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: bold;
-      transition: background 0.3s;
-    }
-    .btn:hover {
-      background: #128C7E;
-    }
-    footer {
-      text-align: center;
-      padding: 25px;
-      background: #ff6f61;
-      color: white;
-      margin-top: 40px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SegarKu - Jus, Capung & Es Degan</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            background: #f7fff9;
+            color: #173b2a;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            height: 75px;
+            background: rgba(255,255,255,.95);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 7%;
+            box-shadow: 0 3px 20px rgba(0,0,0,.08);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 23px;
+            font-weight: 800;
+            color: #08783f;
+        }
+
+        .logo i {
+            font-size: 32px;
+        }
+
+        .menu {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: #244636;
+            font-weight: 500;
+            transition: .3s;
+        }
+
+        .menu a:hover {
+            color: #079447;
+        }
+
+        .wa-btn {
+            background: #079447;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: .3s;
+        }
+
+        .wa-btn:hover {
+            background: #056d35;
+            transform: translateY(-2px);
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            min-height: 570px;
+            display: flex;
+            align-items: center;
+            padding: 70px 7%;
+            background:
+                linear-gradient(90deg,
+                rgba(4,65,33,.94),
+                rgba(4,65,33,.65),
+                rgba(4,65,33,.2)),
+                url("https://images.unsplash.com/photo-1600271886742-f049cd451bba?auto=format&fit=crop&w=1600&q=80");
+
+            background-size: cover;
+            background-position: center;
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 650px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #d9ffe8;
+            color: #08783f;
+            padding: 8px 17px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(42px, 6vw, 72px);
+            line-height: 1.08;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: #65ef9b;
+        }
+
+        .hero p {
+            font-size: 18px;
+            max-width: 570px;
+            color: #e9fff1;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: #16a85a;
+            color: white;
+            text-decoration: none;
+            padding: 14px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: .3s;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            background: #078541;
+        }
+
+        .btn-secondary {
+            color: white;
+            border: 1px solid white;
+            padding: 13px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* ================= SECTION ================= */
+
+        section {
+            padding: 75px 7%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-title small {
+            color: #0b9250;
+            font-weight: 700;
+        }
+
+        .section-title h2 {
+            font-size: 38px;
+            margin: 8px 0;
+        }
+
+        .section-title p {
+            color: #718078;
+        }
+
+        /* ================= CATEGORY ================= */
+
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 25px;
+        }
+
+        .category {
+            background: white;
+            border-radius: 22px;
+            padding: 25px;
+            border: 1px solid #e2eee7;
+            box-shadow: 0 10px 35px rgba(0,0,0,.05);
+            transition: .3s;
+        }
+
+        .category:hover {
+            transform: translateY(-7px);
+        }
+
+        .category h3 {
+            margin-bottom: 8px;
+        }
+
+        .category p {
+            font-size: 14px;
+            color: #718078;
+            margin-bottom: 20px;
+        }
+
+        .category-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            font-size: 22px;
+            background: #e2fff0;
+            color: #078541;
+        }
+
+        /* ================= PRODUCTS ================= */
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 20px;
+        }
+
+        .product {
+            background: white;
+            overflow: hidden;
+            border-radius: 20px;
+            border: 1px solid #e5eee8;
+            box-shadow: 0 8px 25px rgba(0,0,0,.05);
+            transition: .3s;
+        }
+
+        .product:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 15px 35px rgba(0,0,0,.1);
+        }
+
+        .product-img {
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: .5s;
+        }
+
+        .product:hover img {
+            transform: scale(1.08);
+        }
+
+        .product-info {
+            padding: 18px;
+        }
+
+        .product-info h3 {
+            font-size: 17px;
+            margin-bottom: 5px;
+        }
+
+        .product-info p {
+            font-size: 13px;
+            color: #78847d;
+            margin-bottom: 10px;
+        }
+
+        .price {
+            color: #087f42;
+            font-weight: 800;
+            font-size: 18px;
+            margin-bottom: 14px;
+        }
+
+        .order-btn {
+            width: 100%;
+            border: none;
+            background: #087f42;
+            color: white;
+            padding: 11px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 600;
+            transition: .3s;
+        }
+
+        .order-btn:hover {
+            background: #055e30;
+        }
+
+        /* ================= WHATSAPP ================= */
+
+        .order-section {
+            background: linear-gradient(135deg,#dffff0,#effff6);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            border-radius: 30px;
+            margin: 30px 7%;
+            padding: 55px;
+        }
+
+        .order-section h2 {
+            font-size: 35px;
+            margin-bottom: 12px;
+        }
+
+        .order-section p {
+            color: #5c6d63;
+            max-width: 600px;
+            margin-bottom: 20px;
+        }
+
+        .phone {
+            font-size: 18px;
+            font-weight: 700;
+            color: #087f42;
+        }
+
+        .whatsapp-big {
+            min-width: 210px;
+            background: #16a85a;
+            color: white;
+            text-align: center;
+            padding: 17px 25px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 700;
+            box-shadow: 0 10px 25px rgba(22,168,90,.25);
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #083b28;
+            color: white;
+            padding: 50px 7% 25px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+            margin-bottom: 35px;
+        }
+
+        footer h3 {
+            font-size: 23px;
+            margin-bottom: 10px;
+        }
+
+        footer p {
+            color: #c3d9cd;
+            max-width: 400px;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .social {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+        }
+
+        .copyright {
+            border-top: 1px solid rgba(255,255,255,.15);
+            padding-top: 20px;
+            text-align: center;
+            color: #adc7ba;
+            font-size: 13px;
+        }
+
+        /* ================= MOBILE ================= */
+
+        @media(max-width: 900px) {
+
+            .menu {
+                display: none;
+            }
+
+            .products {
+                grid-template-columns: repeat(2,1fr);
+            }
+
+            .categories {
+                grid-template-columns: 1fr;
+            }
+
+            .order-section {
+                margin: 20px;
+                padding: 35px 25px;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        @media(max-width: 600px) {
+
+            nav {
+                padding: 0 5%;
+            }
+
+            .wa-btn {
+                padding: 9px 14px;
+                font-size: 12px;
+            }
+
+            .hero {
+                min-height: 550px;
+                padding: 50px 6%;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            section {
+                padding: 55px 6%;
+            }
+
+            .products {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title h2 {
+                font-size: 29px;
+            }
+
+            .order-section h2 {
+                font-size: 28px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+            }
+        }
+    </style>
 </head>
+
 <body>
-  <nav>
-    <a href="#">Home</a>
-    <a href="#">Produk</a>
-    <a href="#">Kontak</a>
-  </nav>
 
-  <header>
-    <h1>🍹 Toko Minuman Segar</h1>
-    <p>Jus • Capung/Gatrum • Es Degan</p>
-  </header>
+<!-- ================= NAVBAR ================= -->
 
-  <div class="container">
-    <!-- Produk Jus -->
-    <div class="card">
-      <img src="https://cdn.pixabay.com/photo/2017/01/20/00/30/orange-1995056_1280.jpg" alt="Jus Segar">
-      <h3>Jus Segar</h3>
-      <p>Aneka jus buah pilihan, segar dan sehat.</p>
-      <a class="btn" href="https://wa.me/6281234567890?text=Halo%20saya%20ingin%20pesan%20Jus%20Segar">Pesan via WhatsApp</a>
+<nav>
+
+    <div class="logo">
+        <i class="fa-solid fa-leaf"></i>
+        SegarKu
     </div>
 
-    <!-- Produk Capung/Gatrum -->
-    <div class="card">
-      <img src="https://cdn.pixabay.com/photo/2016/07/28/01/43/tea-1541650_1280.jpg" alt="Capung/Gatrum">
-      <h3>Capung / Gatrum</h3>
-      <p>Minuman tradisional khas, nikmat dan menyehatkan.</p>
-      <a class="btn" href="https://wa.me/6281234567890?text=Halo%20saya%20ingin%20pesan%20Capung/Gatrum">Pesan via WhatsApp</a>
+    <ul class="menu">
+        <li><a href="#home">Beranda</a></li>
+        <li><a href="#produk">Produk</a></li>
+        <li><a href="#pesan">Cara Pesan</a></li>
+        <li><a href="#kontak">Kontak</a></li>
+    </ul>
+
+    <a class="wa-btn"
+       href="https://wa.me/6281234567890"
+       target="_blank">
+       <i class="fa-brands fa-whatsapp"></i>
+       Pesan
+    </a>
+
+</nav>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <span class="badge">
+            <i class="fa-solid fa-leaf"></i>
+            Minuman Segar & Berkualitas
+        </span>
+
+        <h1>
+            Jus, <span>Capung</span><br>
+            & Es Degan
+        </h1>
+
+        <p>
+            Kesegaran alami dengan rasa yang nikmat.
+            Pilihan minuman segar untuk menemani aktivitas
+            kamu setiap hari.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="#produk" class="btn-primary">
+                <i class="fa-solid fa-bag-shopping"></i>
+                Lihat Produk
+            </a>
+
+            <a href="#pesan" class="btn-secondary">
+                Cara Pemesanan
+            </a>
+
+        </div>
+
     </div>
 
-    <!-- Produk Es Degan -->
-    <div class="card">
-      <img src="https://share.google/XBle75S4hfUX2fwJk.jpg" alt="Es Degan">
-      <h3>Es Degan</h3>
-      <p>Kelapa muda segar dengan es, pelepas dahaga alami.</p>
-      <a class="btn" href="https://wa.me/6281234567890?text=Halo%20saya%20ingin%20pesan%20Es%20Degan">Pesan via WhatsApp</a>
-    </div>
-  </div>
+</section>
 
-  <footer>
-    <p>© 2026 Toko Minuman Segar | Pemesanan via WhatsApp</p>
-  </footer>
-</body>
-</html>
+
+<!-- ================= PRODUK ================= -->
+
+<section id="produk">
+
+    <div class="section-title">
+
+        <small>✦ PRODUK KAMI ✦</small>
+
+        <h2>Pilihan Minuman Favorit</h2>
+
+        <p>
+            Pilih minuman favoritmu dan pesan langsung melalui WhatsApp.
+        </p>
+
+    </div>
+
+
+    <!-- JUS -->
+
+    <div class="category">
+
+        <div class="category-icon">
+            <i class="fa-solid fa-glass-water"></i>
+        </div>
+
+        <h3>Jus Buah</h3>
+
+        <p>
+            Jus buah segar dengan bahan berkualitas.
+        </p>
+
+        <div class="products">
+
+            <div class="product">
+
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1600271886742-f049cd451bba?auto=format&fit=crop&w=600&q=80">
+                </div>
+
+                <div class="product-info">
+
+                    <h3>Jus Mangga</h3>
+
+                    <p>Manis dan segar</p>
+
+                    <div class="price">Rp 8.000</div>
+
+                    <button class="order-btn"
+                            onclick="pesan('Jus Mangga','8000')">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        Pesan Sekarang
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="product">
+
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1553279768-865429fa0078?auto=format&fit=crop&w=600&q=80">
+                </div>
+
+                <div class="product-info">
+
+                    <h3>Jus Alpukat</h3>
+
+                    <p>Alpukat creamy</p>
+
+                    <div class="price">Rp 10.000</div>
+
+                    <button class="order-btn"
+                            onclick="pesan('Jus Alpukat','10000')">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        Pesan Sekarang
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="product">
+
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=600&q=80">
+                </div>
+
+                <div class="product-info">
+
+                    <h3>Jus Strawberry</h3>
+
+                    <p>Segar dan manis</p>
+
+                    <div class="price">Rp 10.000</div>
+
+                    <button class="order-btn"
+                            onclick="pesan('Jus Strawberry','10000')">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        Pesan Sekarang
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="product">
+
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1613478223719-2ab802602423?auto=format&fit=crop&w=600&q=80">
+                </div>
+
+                <div class="product-info">
+
+                    <h3>Jus Jeruk</h3>
+
+                    <p>Asam manis menyegarkan</p>
+
+                    <div class="price">Rp 8.000</div>
+
+                    <button class="order-btn"
+                            onclick="pesan('Jus Jeruk','8000')">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        Pesan Sekarang
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- CAPUNG -->
+
+    <div class="category" style="margin-top:30px;">
+
+        <div class="category-icon">
+            🦋
+        </div>
+
+        <h3>Capung</h3>
+
+        <p>
+            Berbagai varian capung dengan rasa unik.
+        </p>
+
+        <div class="products">
+
+            <div class="product">
+
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=600&q=80">
+                </div>
+
+                <div class="product-info">
+
+                    <h3>Capung Original</h3>
+
+                    <p>Varian original</p>
+
+                    <div class="price">Rp 5.000</div>
+
+                    <button class="order-btn"
+                            onclick="pesan('Capung Original','5000')">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        Pesan Sekarang
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="product">
+
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1577805947697-89e18249d767?auto=format&fit=crop&w=600&q=80">
+                </div>
+
+                <div class="product-info">
+
+                    <h3>Capung Cokelat</h3>
+
+                    <p>Rasa cokelat</p>
+
+                    <div class="price">Rp 6.000</div>
+
+                    <button class="order-btn"
+                            onclick="pesan('Capung Cokelat','6000')">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        Pesan Sekarang
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="product">
+
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=600&q=80">
+                </div>
+
+                <div class="product-info">
+
+                    <h3>Capung Warna</h3>
+
+                    <p>Rasa warna-warni</p>
+
+                    <div class="price">Rp 5.000</div>
+
+                    <button class="order-btn"
+                            onclick="pesan('Capung Warna','5000')">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        Pesan Sekarang
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="product">
+
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=600&q=80">
+                </div>
+
+                <
+```
+                  
