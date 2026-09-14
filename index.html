@@ -1,435 +1,847 @@
+```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SegarNusantara - Jus, Es Degan & Gatrum/Capung</title>
-    <!-- Google Fonts & Font Awesome Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
+    <title>RasaKita - Capung Goreng, Jus & Tahu Krispi</title>
+
+    <meta name="description"
+          content="Toko online Capung Goreng, Jus Segar dan Tahu Krispi. Pesan langsung melalui WhatsApp.">
+
     <style>
-        /* RESET & BASE STYLES */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        html {
             scroll-behavior: smooth;
         }
 
-        :root {
-            --primary: #10B981; /* Emerald Green */
-            --primary-dark: #059669;
-            --accent: #F59E0B; /* Warm Amber */
-            --bg-dark: #0F172A; /* Deep Slate */
-            --card-bg: rgba(255, 255, 255, 0.05);
-            --text-light: #F8FAFC;
-            --text-muted: #94A3B8;
-        }
-
         body {
-            background-color: var(--bg-dark);
-            color: var(--text-light);
-            overflow-x: hidden;
+            background: #f7f8fa;
+            color: #222;
         }
 
         /* NAVBAR */
-        header {
-            position: fixed;
+        .navbar {
+            position: sticky;
             top: 0;
-            width: 100%;
             z-index: 1000;
-            background: rgba(15, 23, 42, 0.8);
+            background: rgba(255,255,255,0.95);
             backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 1.2rem 8%;
+            border-bottom: 1px solid #eee;
+        }
+
+        .nav-container {
+            max-width: 1150px;
+            margin: auto;
+            padding: 15px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--text-light);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            font-size: 24px;
+            font-weight: 800;
+            color: #ff5a00;
         }
 
         .logo span {
-            color: var(--primary);
+            color: #222;
         }
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 25px;
             list-style: none;
         }
 
         .nav-links a {
-            color: var(--text-muted);
             text-decoration: none;
-            font-weight: 500;
-            transition: 0.3s;
+            color: #333;
+            font-weight: 600;
         }
 
         .nav-links a:hover {
-            color: var(--primary);
+            color: #ff5a00;
         }
 
-        /* HERO SECTION */
+        .cart-button {
+            border: none;
+            background: #ff5a00;
+            color: white;
+            padding: 11px 17px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* HERO */
         .hero {
-            min-height: 100vh;
-            padding: 8rem 8% 4rem;
+            min-height: 520px;
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            background: radial-gradient(circle at 10% 20%, rgba(16, 185, 129, 0.15) 0%, transparent 40%),
-                        radial-gradient(circle at 90% 80%, rgba(245, 158, 11, 0.15) 0%, transparent 40%);
-        }
-
-        .hero-text {
-            max-width: 600px;
-        }
-
-        .tagline {
-            background: rgba(16, 185, 129, 0.1);
-            color: var(--primary);
-            padding: 6px 16px;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            display: inline-block;
-            margin-bottom: 1.5rem;
-            border: 1px solid rgba(16, 185, 129, 0.2);
-        }
-
-        .hero-text h1 {
-            font-size: 3.5rem;
-            line-height: 1.2;
-            margin-bottom: 1.5rem;
-            font-weight: 700;
-        }
-
-        .hero-text h1 span {
-            background: linear-gradient(to right, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero-text p {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-            line-height: 1.6;
-        }
-
-        .cta-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            background:
+                linear-gradient(135deg, rgba(255,90,0,.95), rgba(255,150,0,.85)),
+                url("https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1600&q=80");
+            background-size: cover;
+            background-position: center;
             color: white;
-            padding: 14px 32px;
-            border-radius: 50px;
+        }
+
+        .hero-container {
+            max-width: 1150px;
+            width: 100%;
+            margin: auto;
+            padding: 60px 20px;
+        }
+
+        .hero h1 {
+            max-width: 650px;
+            font-size: clamp(40px, 7vw, 70px);
+            line-height: 1.05;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            max-width: 600px;
+            font-size: 19px;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        .hero-button {
+            display: inline-block;
             text-decoration: none;
-            font-weight: 600;
-            box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.4);
-            transition: 0.3s;
+            background: white;
+            color: #ff5a00;
+            padding: 15px 24px;
+            border-radius: 14px;
+            font-weight: bold;
+            transition: .3s;
         }
 
-        .cta-btn:hover {
+        .hero-button:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 30px -5px rgba(16, 185, 129, 0.6);
         }
 
-        /* PRODUCTS SECTION */
-        .products-section {
-            padding: 6rem 8%;
+        /* SECTION */
+        .section {
+            max-width: 1150px;
+            margin: auto;
+            padding: 70px 20px;
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 4rem;
+            margin-bottom: 40px;
         }
 
         .section-title h2 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
+            font-size: 36px;
+            margin-bottom: 10px;
         }
 
         .section-title p {
-            color: var(--text-muted);
+            color: #777;
         }
 
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
+        /* SEARCH */
+        .search-box {
+            max-width: 600px;
+            margin: 0 auto 40px;
         }
 
-        .product-card {
-            background: var(--card-bg);
-            border-radius: 20px;
-            padding: 1.5rem;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(10px);
-            transition: all 0.4s ease;
+        .search-box input {
+            width: 100%;
+            padding: 16px 20px;
+            border: 1px solid #ddd;
+            border-radius: 14px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .search-box input:focus {
+            border-color: #ff5a00;
+        }
+
+        /* FILTER */
+        .filter {
             display: flex;
-            flex-direction: column;
-            position: relative;
-            overflow: hidden;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 35px;
         }
 
-        .product-card:hover {
-            transform: translateY(-10px);
-            border-color: rgba(16, 185, 129, 0.4);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-        }
-
-        .badge {
-            position: absolute;
-            top: 1.5rem;
-            right: 1.5rem;
-            background: rgba(15, 23, 42, 0.7);
-            color: var(--accent);
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.75rem;
+        .filter button {
+            border: 1px solid #ddd;
+            background: white;
+            padding: 10px 18px;
+            border-radius: 50px;
+            cursor: pointer;
             font-weight: 600;
-            border: 1px solid rgba(245, 158, 11, 0.3);
-            z-index: 2;
         }
 
-        .img-container {
+        .filter button.active,
+        .filter button:hover {
+            background: #ff5a00;
+            color: white;
+            border-color: #ff5a00;
+        }
+
+        /* PRODUCTS */
+        .products {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .product {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0,0,0,.07);
+            transition: .3s;
+        }
+
+        .product:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 35px rgba(0,0,0,.12);
+        }
+
+        .product-image {
             width: 100%;
             height: 220px;
-            border-radius: 14px;
-            overflow: hidden;
-            margin-bottom: 1.2rem;
-        }
-
-        .img-container img {
-            width: 100%;
-            height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
         }
 
-        .product-card:hover .img-container img {
-            transform: scale(1.08);
+        .product-content {
+            padding: 20px;
         }
 
-        .product-info h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
+        .category {
+            display: inline-block;
+            font-size: 12px;
+            background: #fff1e8;
+            color: #ff5a00;
+            padding: 6px 10px;
+            border-radius: 30px;
+            font-weight: bold;
+            margin-bottom: 10px;
         }
 
-        .product-info p {
-            color: var(--text-muted);
-            font-size: 0.88rem;
+        .product h3 {
+            font-size: 21px;
+            margin-bottom: 8px;
+        }
+
+        .product-description {
+            color: #777;
             line-height: 1.5;
-            margin-bottom: 1.5rem;
+            font-size: 14px;
+            margin-bottom: 15px;
         }
 
         .product-bottom {
-            margin-top: auto;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
+            gap: 10px;
         }
 
         .price {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--primary);
+            color: #ff5a00;
+            font-size: 20px;
+            font-weight: 800;
         }
 
-        .buy-btn {
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--text-light);
+        .order-button {
             border: none;
-            width: 42px;
-            height: 42px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            background: #25D366;
+            color: white;
+            padding: 11px 15px;
+            border-radius: 10px;
             cursor: pointer;
-            transition: 0.3s;
+            font-weight: bold;
         }
 
-        .product-card:hover .buy-btn {
-            background: var(--primary);
+        .order-button:hover {
+            opacity: .85;
+        }
+
+        /* WHY US */
+        .features {
+            background: #fff;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .feature {
+            background: #f8f8f8;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .feature-icon {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .feature h3 {
+            margin-bottom: 10px;
+        }
+
+        .feature p {
+            color: #777;
+            line-height: 1.6;
+        }
+
+        /* CART */
+        .cart-panel {
+            position: fixed;
+            right: -420px;
+            top: 0;
+            width: min(400px, 90%);
+            height: 100%;
+            background: white;
+            z-index: 2000;
+            box-shadow: -10px 0 40px rgba(0,0,0,.15);
+            transition: .35s;
+            padding: 25px;
+            overflow-y: auto;
+        }
+
+        .cart-panel.open {
+            right: 0;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .close-cart {
+            border: none;
+            background: #eee;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        .cart-item {
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .cart-item-name {
+            font-weight: bold;
+            margin-bottom: 6px;
+        }
+
+        .cart-item-price {
+            color: #ff5a00;
+        }
+
+        .cart-controls {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .cart-controls button {
+            border: none;
+            background: #eee;
+            width: 30px;
+            height: 30px;
+            border-radius: 7px;
+            cursor: pointer;
+        }
+
+        .cart-total {
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 2px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .checkout {
+            width: 100%;
+            margin-top: 20px;
+            border: none;
+            background: #25D366;
             color: white;
+            padding: 15px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,.4);
+            z-index: 1500;
+            display: none;
+        }
+
+        .overlay.show {
+            display: block;
         }
 
         /* FOOTER */
         footer {
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 3rem 8%;
+            background: #171717;
+            color: white;
             text-align: center;
-            color: var(--text-muted);
-            font-size: 0.9rem;
+            padding: 35px 20px;
         }
 
-        /* RESPONSIVE DESIGN */
-        @media (max-width: 768px) {
-            header {
-                padding: 1rem 5%;
+        footer p {
+            color: #aaa;
+            margin-top: 8px;
+        }
+
+        /* WHATSAPP FLOAT */
+        .wa-float {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            z-index: 900;
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            background: #25D366;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 28px;
+            text-decoration: none;
+            box-shadow: 0 5px 20px rgba(0,0,0,.2);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 850px) {
+            .products {
+                grid-template-columns: repeat(2, 1fr);
             }
-            .hero {
-                padding: 7rem 5% 3rem;
-                flex-direction: column;
-                text-align: center;
+
+            .feature-grid {
+                grid-template-columns: 1fr;
             }
-            .hero-text h1 {
-                font-size: 2.5rem;
-            }
+
             .nav-links {
-                display: none; /* Menyederhanakan tampilan mobile */
+                display: none;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .products {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                min-height: 500px;
+            }
+
+            .hero h1 {
+                font-size: 45px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .section {
+                padding: 50px 15px;
             }
         }
     </style>
 </head>
+
 <body>
 
-    <!-- NAVBAR -->
-    <header>
-        <a href="#" class="logo">
-            <i class="fa-solid fa-glass-water-droplet"></i> Segar<span>Nusantara</span>
-        </a>
+<!-- NAVBAR -->
+<nav class="navbar">
+    <div class="nav-container">
+
+        <div class="logo">
+            Rasa<span>Kita</span> 🍴
+        </div>
+
         <ul class="nav-links">
-            <li><a href="#hero">Beranda</a></li>
+            <li><a href="#home">Home</a></li>
             <li><a href="#produk">Produk</a></li>
-            <li><a href="#kontak">Kontak</a></li>
+            <li><a href="#tentang">Tentang</a></li>
         </ul>
-    </header>
 
-    <!-- HERO SECTION -->
-    <section class="hero" id="hero">
-        <div class="hero-text">
-            <span class="tagline"><i class="fa-solid fa-leaf"></i> 100% Alami & Fresh Setiap Hari</span>
-            <h1>Kesegaran Alami <span>Jus, Degan, & Gatrum</span></h1>
-            <p>Nikmati ragam minuman segar pilihan, dari buah-buahan segar, es degan murni, hingga pilihan unik capung/gatrum dalam satu tempat.</p>
-            <a href="#produk" class="cta-btn">
-                Jelajahi Menu <i class="fa-solid fa-arrow-right"></i>
-            </a>
+        <button class="cart-button" onclick="openCart()">
+            🛒 Keranjang <span id="cartCount">0</span>
+        </button>
+
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+
+    <div class="hero-container">
+
+        <h1>
+            Nikmatnya Makanan & Minuman Favoritmu
+        </h1>
+
+        <p>
+            Capung Goreng renyah, Jus segar dan Tahu Krispi
+            yang siap menemani harimu.
+        </p>
+
+        <a href="#produk" class="hero-button">
+            🛍️ Lihat Produk
+        </a>
+
+    </div>
+
+</section>
+
+<!-- PRODUK -->
+<section class="section" id="produk">
+
+    <div class="section-title">
+        <h2>Menu Kami</h2>
+        <p>Pilih makanan atau minuman favoritmu</p>
+    </div>
+
+    <div class="search-box">
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="🔎 Cari produk..."
+            onkeyup="searchProduct()"
+        >
+    </div>
+
+    <div class="filter">
+
+        <button class="active" onclick="filterProduct('all', this)">
+            Semua
+        </button>
+
+        <button onclick="filterProduct('capung', this)">
+            🦋 Capung Goreng
+        </button>
+
+        <button onclick="filterProduct('jus', this)">
+            🥤 Jus
+        </button>
+
+        <button onclick="filterProduct('tahu', this)">
+            🧀 Tahu Krispi
+        </button>
+
+    </div>
+
+    <div class="products" id="productList">
+
+        <!-- CAPUNG -->
+        <div class="product" data-category="capung" data-name="Capung Goreng Original">
+
+            <img
+                class="product-image"
+                src="https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=700&q=80"
+                alt="Capung Goreng Original"
+            >
+
+            <div class="product-content">
+
+                <span class="category">Capung Goreng</span>
+
+                <h3>Capung Goreng Original</h3>
+
+                <p class="product-description">
+                    Capung goreng dengan bumbu gurih dan renyah.
+                </p>
+
+                <div class="product-bottom">
+
+                    <div class="price">
+                        Rp10.000
+                    </div>
+
+                    <button
+                        class="order-button"
+                        onclick="addToCart('Capung Goreng Original', 10000)"
+                    >
+                        Pesan
+                    </button>
+
+                </div>
+
+            </div>
+
         </div>
-    </section>
 
-    <!-- PRODUCTS SECTION -->
-    <section class="products-section" id="produk">
+
+        <div class="product" data-category="capung" data-name="Capung Goreng Pedas">
+
+            <img
+                class="product-image"
+                src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=700&q=80"
+                alt="Capung Goreng Pedas"
+            >
+
+            <div class="product-content">
+
+                <span class="category">Capung Goreng</span>
+
+                <h3>Capung Goreng Pedas</h3>
+
+                <p class="product-description">
+                    Sensasi gurih dan pedas yang bikin ketagihan.
+                </p>
+
+                <div class="product-bottom">
+
+                    <div class="price">
+                        Rp12.000
+                    </div>
+
+                    <button
+                        class="order-button"
+                        onclick="addToCart('Capung Goreng Pedas', 12000)"
+                    >
+                        Pesan
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- JUS -->
+        <div class="product" data-category="jus" data-name="Jus Alpukat">
+
+            <img
+                class="product-image"
+                src="https://images.unsplash.com/photo-1600271886742-f049cd451bba?auto=format&fit=crop&w=700&q=80"
+                alt="Jus Alpukat"
+            >
+
+            <div class="product-content">
+
+                <span class="category">Jus</span>
+
+                <h3>Jus Alpukat</h3>
+
+                <p class="product-description">
+                    Jus alpukat creamy dan segar.
+                </p>
+
+                <div class="product-bottom">
+
+                    <div class="price">
+                        Rp12.000
+                    </div>
+
+                    <button
+                        class="order-button"
+                        onclick="addToCart('Jus Alpukat', 12000)"
+                    >
+                        Pesan
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="product" data-category="jus" data-name="Jus Mangga">
+
+            <img
+                class="product-image"
+                src="https://images.unsplash.com/photo-1546173159-315724a31696?auto=format&fit=crop&w=700&q=80"
+                alt="Jus Mangga"
+            >
+
+            <div class="product-content">
+
+                <span class="category">Jus</span>
+
+                <h3>Jus Mangga</h3>
+
+                <p class="product-description">
+                    Mangga segar yang dibuat menjadi jus.
+                </p>
+
+                <div class="product-bottom">
+
+                    <div class="price">
+                        Rp10.000
+                    </div>
+
+                    <button
+                        class="order-button"
+                        onclick="addToCart('Jus Mangga', 10000)"
+                    >
+                        Pesan
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="product" data-category="jus" data-name="Jus Jeruk">
+
+            <img
+                class="product-image"
+                src="https://images.unsplash.com/photo-1613478223719-2ab802602423?auto=format&fit=crop&w=700&q=80"
+                alt="Jus Jeruk"
+            >
+
+            <div class="product-content">
+
+                <span class="category">Jus</span>
+
+                <h3>Jus Jeruk</h3>
+
+                <p class="product-description">
+                    Jus jeruk segar dengan rasa manis dan asam.
+                </p>
+
+                <div class="product-bottom">
+
+                    <div class="price">
+                        Rp8.000
+                    </div>
+
+                    <button
+                        class="order-button"
+                        onclick="addToCart('Jus Jeruk', 8000)"
+                    >
+                        Pesan
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- TAHU -->
+        <div class="product" data-category="tahu" data-name="Tahu Krispi Original">
+
+            <img
+                class="product-image"
+                src="https://images.unsplash.com/photo-1623689046286-01d7f95c7e89?auto=format&fit=crop&w=700&q=80"
+                alt="Tahu Krispi Original"
+            >
+
+            <div class="product-content">
+
+                <span class="category">Tahu Krispi</span>
+
+                <h3>Tahu Krispi Original</h3>
+
+                <p class="product-description">
+                    Tahu goreng renyah dengan bumbu gurih.
+                </p>
+
+                <div class="product-bottom">
+
+                    <div class="price">
+                        Rp8.000
+                    </div>
+
+                    <button
+                        class="order-button"
+                        onclick="addToCart('Tahu Krispi Original', 8000)"
+                    >
+                        Pesan
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="product" data-category="tahu" data-name="Tahu Krispi Balado">
+
+            <img
+                class="product-image"
+                src="https://images.unsplash.com/photo-1627662056597-5b2c5c4b8a22?auto=format&fit=crop&w=700&q=80"
+                alt="Tahu Krispi Balado"
+            >
+
+            <div class="product-content">
+
+                <span class="category">Tahu Krispi</span>
+
+                <h3>Tahu Krispi Balado</h3>
+
+                <p class="product-description">
+                    Tahu krispi dengan bumbu balado pedas gurih.
+                </p>
+
+                <div class="product-bottom">
+
+                    <div class="price">
+                        Rp10.000
+                    </div>
+
+                    <button
+                        class="order-button"
+                        onclick="addToCart('Tahu Krispi Balado', 10000)"
+                    >
+                        Pesan
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- TENTANG -->
+<section class="features" id="tentang">
+
+    <div class="section">
+
         <div class="section-title">
-            <h2>Koleksi Menu Segar</h2>
-            <p>Pilih minuman dan produk favoritmu untuk menemani harimu</p>
-        </div>
-
-        <div class="grid-container">
-
-            <!-- KATEGORI 1: JUS BUAH SEGAR -->
-            <div class="product-card">
-                <span class="badge">Jus Buah</span>
-                <div class="img-container">
-                    <img src="https://images.unsplash.com/photo-1613478223719-2ab802602423?auto=format&fit=crop&w=600&q=80" alt="Jus Alpukat">
-                </div>
-                <div class="product-info">
-                    <h3>Jus Alpukat Kental</h3>
-                    <p>Alpukat mentega pilihan dipadukan dengan krimer cokelat yang lezat dan gurih.</p>
-                </div>
-                <div class="product-bottom">
-                    <div class="price">Rp 15.000</div>
-                    <button class="buy-btn"><i class="fa-solid fa-cart-plus"></i></button>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <span class="badge">Jus Buah</span>
-                <div class="img-container">
-                    <img src="https://images.unsplash.com/photo-1553530666-ba11a7da3888?auto=format&fit=crop&w=600&q=80" alt="Jus Mangga">
-                </div>
-                <div class="product-info">
-                    <h3>Jus Mangga Harum Manis</h3>
-                    <p>Mangga asli kaya vitamin C, diolah segar tanpa pemanis buatan.</p>
-                </div>
-                <div class="product-bottom">
-                    <div class="price">Rp 14.000</div>
-                    <button class="buy-btn"><i class="fa-solid fa-cart-plus"></i></button>
-                </div>
-            </div>
-
-            <!-- KATEGORI 2: ES DEGAN (KELAPA MUDA) -->
-            <div class="product-card">
-                <span class="badge">Es Degan</span>
-                <div class="img-container">
-                    <img src="https://images.unsplash.com/photo-1525385133512-2f3bdd039054?auto=format&fit=crop&w=600&q=80" alt="Es Degan Murni">
-                </div>
-                <div class="product-info">
-                    <h3>Es Degan Murni</h3>
-                    <p>Air dan daging kelapa muda segar langsung dari batoknya. Murni dan menghidrasi.</p>
-                </div>
-                <div class="product-bottom">
-                    <div class="price">Rp 10.000</div>
-                    <button class="buy-btn"><i class="fa-solid fa-cart-plus"></i></button>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <span class="badge">Es Degan</span>
-                <div class="img-container">
-                    <img src="https://images.unsplash.com/photo-1546171753-97d7676e4602?auto=format&fit=crop&w=600&q=80" alt="Es Degan Gula Merah">
-                </div>
-                <div class="product-info">
-                    <h3>Es Degan Gula Jawa</h3>
-                    <p>Perpaduan rasa gurih kelapa muda dan manisnya sirup gula aren alami.</p>
-                </div>
-                <div class="product-bottom">
-                    <div class="price">Rp 12.000</div>
-                    <button class="buy-btn"><i class="fa-solid fa-cart-plus"></i></button>
-                </div>
-            </div>
-
-            <!-- KATEGORI 3: GATRUM / CAPUNG -->
-            <div class="product-card">
-                <span class="badge">Gatrum / Capung</span>
-                <div class="img-container">
-                    <img src="https://images.unsplash.com/photo-1526336024174-e58f5cdd8e13?auto=format&fit=crop&w=600&q=80" alt="Capung Hias / Gatrum">
-                </div>
-                <div class="product-info">
-                    <h3>Gatrum / Capung Merah</h3>
-                    <p>Jenis capung unik berwana merah untuk kebutuhan koleksi, fotografi, atau edukasi.</p>
-                </div>
-                <div class="product-bottom">
-                    <div class="price">Rp 8.000</div>
-                    <button class="buy-btn"><i class="fa-solid fa-cart-plus"></i></button>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <span class="badge">Gatrum / Capung</span>
-                <div class="img-container">
-                    <img src="https://images.unsplash.com/photo-1470058869958-2a77ade41c02?auto=format&fit=crop&w=600&q=80" alt="Capung Hijau / Gatrum">
-                </div>
-                <div class="product-info">
-                    <h3>Gatrum / Capung Hijau (Jarum)</h3>
-                    <p>Jenis capung jarum dengan warna hijau menyala. Sangat unik dan langka.</p>
-                </div>
-                <div class="product-bottom">
-                    <div class="price">Rp 10.000</div>
-                    <button class="buy-btn"><i class="fa-solid fa-cart-plus"></i></button>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer id="kontak">
-        <p>&copy; 2026 SegarNusantara. All Rights Reserved. Dibuat dengan desain modern.</p>
-    </footer>
-
-</body>
-</html>
+            <h2>Kenapa Pilih Kami?</h2>
+            <p>Pesan makanan jadi lebih mudah
