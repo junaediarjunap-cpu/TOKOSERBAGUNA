@@ -97,29 +97,22 @@
 
     <script>
         // ⚠️ GANTI NOMOR WA DI SINI (Format: 628xxx tanpa +)
-        const NOMOR_WA = "6281234567890"; 
+        const NOMOR_WA = "6282245915267"; 
 
         const products = [
-            {
-                id: 1,
-                name: "Gantungan Kunci Capung Resin",
-                desc: "Gantungan kunci capung dari resin transparan dengan detail sayap realistis. Cocok untuk tas atau kunci motor.",
-                price: 25000,
-                img: "https://images.unsplash.com/photo-1605100804763-247f67b2548e?w=400&q=80"
-            },
             {
                 id: 2,
                 name: "Gantungan Kunci Capung Kayu",
                 desc: "Ukiran kayu jati berbentuk capung dengan finishing natural. Ringan dan tahan lama.",
                 price: 30000,
-                img: "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=400&q=80"
+                img: "https://www.pexels.com/search/dragonfly/.jpg"
             },
             {
                 id: 3,
                 name: "Jus Mangga Harum Manis",
                 desc: "Mangga harum manis asli diblend tanpa air tambahan. Manis alami dan kaya vitamin C.",
                 price: 15000,
-                img: "https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?w=400&q=80"
+                img: "https://commons.wikimedia.org/wiki/Special:FilePath/Glass_of_Mango_Juice.jpg"
             },
             {
                 id: 4,
@@ -127,13 +120,6 @@
                 desc: "Perpaduan jus mangga segar dengan susu kental manis. Creamy dan menyegarkan.",
                 price: 18000,
                 img: "https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?w=400&q=80"
-            },
-            {
-                id: 5,
-                name: "Es Cincau Gula Aren",
-                desc: "Cincau hitam homemade dengan sirup gula aren organik dan santan segar. Pelepas dahaga terbaik.",
-                price: 12000,
-                img: "https://images.unsplash.com/photo-1543255006-d639f26f1c19?w=400&q=80"
             },
             {
                 id: 6,
@@ -170,7 +156,7 @@
 
         function orderViaWA(productName, price) {
             const message = `Halo, saya mau beli ${productName} seharga ${formatRupiah(price)}. Apakah masih tersedia?`;
-            const waLink = `https://wa.me/${NOMOR_WA}?text=${encodeURIComponent(message)}`;
+            const waLink = `https://wa.me/${}?text=${encodeURIComponent(message)}`;
             window.open(waLink, '_blank');
         }
 
